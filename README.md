@@ -1,5 +1,5 @@
 # JavaScript tutorial: Build Tetris with modern JavaScript
-**Links:** [JavaScript tutorial: Build Tetris with modern JavaScript](https://www.educative.io/blog/javascript-tutorial-build-tetris)
+**Link:** [JavaScript tutorial: Build Tetris with modern JavaScript](https://www.educative.io/blog/javascript-tutorial-build-tetris)
 ![Tetris in JS](./public/tetris-in-js.jpg)
 
 From [JavaScript tutorial: Build Tetris with modern JavaScript](https://www.educative.io/blog/javascript-tutorial-build-tetris) by [educative](https://www.educative.io/):
