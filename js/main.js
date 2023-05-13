@@ -13,8 +13,9 @@ ctx.canvas.height = ROWS * BLOCK_SIZE;
 // ctx.fillStyle = 'red';
 // ctx.fillRect(0, 0, BLOCK_SIZE, BLOCK_SIZE);
 
-function play() {
+const createNewAndRenderBoard = () => {
     board = new Board(ctx);
     console.table(board.grid);
     board.renderBoard();
 }
+
