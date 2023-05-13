@@ -8,12 +8,13 @@ ctx.canvas.width = COLS * BLOCK_SIZE;
 ctx.canvas.height = ROWS * BLOCK_SIZE;
 
 // Scale blocks
-ctx.scale(BLOCK_SIZE, BLOCK_SIZE);
+//ctx.scale(ctx.canvas.width, ctx.canvas.height);
 
 // ctx.fillStyle = 'red';
-// ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+// ctx.fillRect(0, 0, BLOCK_SIZE, BLOCK_SIZE);
 
 function play() {
     board = new Board(ctx);
     console.table(board.grid);
+    board.renderBoard();
 }
