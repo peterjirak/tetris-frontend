@@ -2,6 +2,7 @@
 const COLS = 10;
 const ROWS = 20;
 const BLOCK_SIZE = 30;
+const GRID_WIDTH = 2;
 
 const NONE = 'NONE';
 const T = 'T';
@@ -21,4 +22,12 @@ const TETROMINOS_VALUE_BY_NAME = {
     STRAIGHT: 4,
     MIRROR_L: 5,
     MIRROR_SKEW: 6
+};
+
+const TEA_GREEN = 'TEA_GREEN';
+const LIGHT_GREEN = 'LIGHT_GREEN';
+
+const palette = {
+    [TEA_GREEN]: '#D6FFD8',
+    [LIGHT_GREEN]: '#AFFEB1'
 };
