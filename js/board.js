@@ -4,29 +4,16 @@ class Board {
         this.cols = ctx.canvas.width / BLOCK_SIZE;
         this.rows = ctx.canvas.height / BLOCK_SIZE;
         this.grid = this.getEmptyBoard();
+        this.activePiece = null;
     }
 
-    renderGridBorder(rowIndex, columnIndex) {
-        const upperLeftX = columnIndex * BLOCK_SIZE;
-        const upperLeftY = rowIndex * BLOCK_SIZE;
-        // TOP
-        ctx.fillStyle = palette[LIGHT_GREEN];
-        ctx.fillRect(upperLeftX, upperLeftY, BLOCK_SIZE, GRID_WIDTH);
-        // LEFT
-        ctx.fillRect(upperLeftX, upperLeftY + GRID_WIDTH, GRID_WIDTH, BLOCK_SIZE - GRID_WIDTH * 2);
-        // RIGHT
-        ctx.fillRect(upperLeftX + BLOCK_SIZE - GRID_WIDTH, upperLeftY + GRID_WIDTH, GRID_WIDTH, BLOCK_SIZE - GRID_WIDTH * 2);
-        // BOTTOM
-        ctx.fillRect(upperLeftX, upperLeftY + BLOCK_SIZE - GRID_WIDTH, BLOCK_SIZE, GRID_WIDTH);
-    }
-
-    renderEmptySquare(rowIndex, columnIndex) {
-        this.renderGridBorder(rowIndex, columnIndex);
-        const upperLeftX = columnIndex * BLOCK_SIZE + GRID_WIDTH;
-        const upperLeftY = rowIndex * BLOCK_SIZE + GRID_WIDTH;
-        ctx.fillStyle = palette[TEA_GREEN];
-        // FILL
-        ctx.fillRect(upperLeftX, upperLeftY, BLOCK_SIZE - GRID_WIDTH * 2, BLOCK_SIZE - GRID_WIDTH * 2);
+    addActivePiece() {
+        if (this.activePiece) {
+            return false;
+        } else{
+            this.activePiece = new Piece();
+            return true;
+        }
     }
 
     renderBoard() {
@@ -35,7 +22,7 @@ class Board {
             for (let j = 0; j < row.length; j += 1) {
                 const contentCode = row[j];
                 if (TETROMINOS_VALUE_BY_NAME[NONE] === contentCode) {
-                    this.renderEmptySquare(i, j);
+                    renderEmptySquare(this.ctx, i, j);
                 }
             }
         }
