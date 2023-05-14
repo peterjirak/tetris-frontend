@@ -329,14 +329,14 @@ class Piece {
         }
     };
     static _chooseRandomTetromino() {
-        // [TutorialsPoint - JavaScript - How to generate random numbers between two numbers in JavaScript?](https://www.tutorialspoint.com/How-to-generate-random-numbers-between-two-numbers-in-JavaScript#:~:text=How%20to%20generate%20random%20numbers%20between%20two%20numbers%20in%20JavaScript%3F&text=To%20generate%20a%20random%20number,)%20to%201%20(exclusive).)
-        const which = Math.floor(Math.random() * ((TETROMINOS.length - 1 - 1)+1) + 1);
+        // [TutorialsPoint - JavaScript - How to generate random numbers between two numbers in JavaScript?](https://www.tutorialspoint.com/How-to-generate-random-numbers-between-two-numbers-in-JavaScript#:~:text=How%20to%20generate%20random%20numbers%20between%20two%20numbers%20in%20JavaScript%3F&text=To%20generate%20a%20random%20number,)
+        const which = Math.floor(Math.random() * ((TETROMINOS.length - 1 - 1) + 1) + 1);
         console.debug(`Piece._chooseRandomTetromino(): tetromino index: ${which}, ${TETROMINOS[which]}`);
         return TETROMINOS[which];
     }
     static _chooseRandomRotationIndex(tetrominoType) {
         const rotations = Piece.tetrominos[tetrominoType].rotations;
-        const which = rotations.length > 1 ? Math.floor(Math.random() * ((rotations.length - 1 - 1)+1) + 1) : 0;
+        const which = Math.floor(Math.random() * ((rotations.length - 1 - 0) +1) + 0);
         console.debug(`Piece._chooseRandomRotationIndex('${tetrominoType}'): rotation index: ${which})`);
         return which;
     }
