@@ -19,3 +19,23 @@ const createNewAndRenderBoard = () => {
     board.renderBoard();
 }
 
+const placePiece = () => {
+    if (board) {
+        if (!board.activePiece) {
+            board.addActivePiece();
+        }
+    }
+};
+
+const renderPiece = () => {
+    if (board) {
+        if (!board.activePiece) {
+            const ctx = board.ctx;
+            const activePiece = board.activePiece;
+            if (activePiece) {
+                activePiece.renderPiece(ctx);
+            }
+        }
+    }
+
+}
