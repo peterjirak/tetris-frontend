@@ -356,8 +356,29 @@ class Piece {
         this.leftX = leftX;
         this.upperY = upperY;
     }
-    renderPiece(ctx) {
+    rotatePieceClockwise() {
         const tetrominoType = this.tetrominoType;
+        const currentRotation = this.rotation;
+        const currentHeight = this.height;
+        const currentLeftX = this.leftX;
+        const currentUpperY = this.upperY;
+        const currentLowerY = currentUpperY + currentHeight;
+        const newRotation = currentRotation >= -1 + Piece.tetrominos[tetrominoType].rotations.length ? 0 : currentRotation + 1;
+        const newGrid = Piece.tetrominos[tetrominoType].rotations[newRotation].grid;
+        const newWidth = Piece.tetrominos[tetrominoType].rotations[newRotation].width;
+        const newHeight = Piece.tetrominos[tetrominoType].rotations[newRotation].height;
+        const newUpperY = currentLowerY - newHeight;
+        const newRightX = currentLeftX + newWidth >  COLS - 1 ? COLS - 1 - newWidth : currentLeftX + newWidth;
+        const newLeftX = newRightX - newWidth;
+        this.rotation = newRotation;
+        this.grid = newGrid;
+        this.width = newWidth;
+        this.height = newHeight;
+        this.upperY = newUpperY;
+        this.leftX = newLeftX;
+        return;
+    }
+    renderPiece(ctx) {
         for (let i = this.upperY; i < this.upperY + this.height; i += 1) {
             if (i < 0) {
                 continue;
