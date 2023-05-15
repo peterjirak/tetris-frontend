@@ -380,8 +380,8 @@ class Piece {
         const newWidth = Piece.tetrominos[tetrominoType].rotations[newRotation].width;
         const newHeight = Piece.tetrominos[tetrominoType].rotations[newRotation].height;
         const newUpperY = currentLowerY - newHeight;
-        const newRightX = currentLeftX + newWidth >  COLS - 1 ? COLS - 1 - newWidth : currentLeftX + newWidth;
-        const newLeftX = newRightX - newWidth;
+        const newRightX = currentLeftX + newWidth - 1 >  COLS - 1 ? COLS - 1 : currentLeftX + newWidth - 1;
+        const newLeftX = newRightX - newWidth + 1;
         this.rotation = newRotation;
         this.pieceGrid = newGrid;
         this.width = newWidth;
