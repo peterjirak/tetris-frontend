@@ -4,6 +4,7 @@ class Board {
         this.cols = ctx.canvas.width / BLOCK_SIZE;
         this.rows = ctx.canvas.height / BLOCK_SIZE;
         this.grid = this.getEmptyBoard();
+        this.gameActive = false;
         this.activePiece = null;
     }
 
@@ -11,7 +12,8 @@ class Board {
         if (this.activePiece) {
             return false;
         } else{
-            this.activePiece = new Piece();
+            this.activePiece = new Piece( { tetrominoType: L, rotation: 0, leftX: 5, upperY: 5 } );
+//            this.activePiece = new Piece();
             return true;
         }
     }
@@ -32,5 +34,13 @@ class Board {
         return Array.from(
             {length: ROWS}, () => Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE])
         );
+    }
+
+    setGameActive() {
+        this.gameActive = true;
+    }
+
+    isGameActive() {
+        return this.gameActive;
     }
 }
