@@ -68,6 +68,15 @@ const registerReleaseUpArrowKey = () => {
                                     activePiece.renderPiece(ctx);
                                 }
                             }
+                            if (board.hasCompletedRows()) {
+                                board.handleCompletedRows();
+                                board.renderBoard();
+                                activePiece = board.activePiece;
+                                if (activePiece) {
+                                    const ctx = board.ctx;
+                                    activePiece.renderPiece(ctx);
+                                }
+                            }
                         }
                     }
                 }

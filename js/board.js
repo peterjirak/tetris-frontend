@@ -149,6 +149,74 @@ class Board {
         }
     }
 
+    hasCompletedRows() {
+        const boardGrid = this.boardGrid;
+        for (let i = ROWS - 1; i >= 0; i -= 1) {
+            let rowComplete = true;
+            for (let j = 0; j < COLS; j += 1) {
+                const boardCode = boardGrid[i][j];
+                if (TETROMINOS[boardCode] === NONE) {
+                    rowComplete = false;
+                    break;
+                }
+            }
+            if (rowComplete) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    completedRowCount() {
+        const boardGrid = this.boardGrid;
+        let rowCount = 0;
+        for (let i = ROWS - 1; i >= 0; i -= 1) {
+            let rowComplete = true;
+            for (let j = 0; j < COLS; j += 1) {
+                const boardCode = boardGrid[i][j];
+                if (TETROMINOS[boardCode] === NONE) {
+                    rowComplete = false;
+                    break;
+                }
+            }
+            if (rowComplete) {
+                rowCount += 1;
+            }
+        }
+        return rowCount;
+    }
+
+    identifyCompletedRows() {
+        const boardGrid = this.boardGrid;
+        let completedRows = [];
+        for (let i = ROWS - 1; i >= 0; i -= 1) {
+            let rowComplete = true;
+            for (let j = 0; j < COLS; j += 1) {
+                const boardCode = boardGrid[i][j];
+                if (TETROMINOS[boardCode] === NONE) {
+                    rowComplete = false;
+                    break;
+                }
+            }
+            if (rowComplete) {
+                completedRows.push(i);
+            }
+        }
+        return completedRows;
+    }
+
+    handleCompletedRows() {
+        const completedRows = this.identifyCompletedRows();
+        for (const rowIndex of completedRows) {
+            this.boardGrid.splice(rowIndex, 1);
+        }
+        for (let i = 0; i < completedRows.length; i += 1) {
+            const newRow = Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE]);
+            this.boardGrid.unshift(newRow);
+        }
+        addToLineCount(completedRows.length);
+    }
+
     getEmptyBoard() {
         return Array.from(
             {length: ROWS}, () => Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE])

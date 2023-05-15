@@ -2,6 +2,7 @@
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
 let board = null;
+let lines = 0;
 
 // Calculate size of canvas from constants.
 ctx.canvas.width = COLS * BLOCK_SIZE;
@@ -58,4 +59,12 @@ const isGameActive = () => {
 
 const getBoard = () => {
     return board;
+}
+
+const clearLineCount = () => {
+    lines = 0;
+}
+
+const addToLineCount = (addValue) => {
+    lines += addValue;
 }
