@@ -44,6 +44,19 @@ const registerReleaseUpArrowKey = () => {
                             }
                         }
                     }
+                } else if (event.key === 'ArrowDown') {
+                    if (isGameActive()) {
+                        const board = getBoard();
+                        if (board) {
+                            const activePiece = board.activePiece;
+                            if (activePiece) {
+                                board.moveActivePieceDown();
+                                board.renderBoard();
+                                const ctx = board.ctx;
+                                activePiece.renderPiece(ctx);
+                            }
+                        }
+                    }
                 }
             }
         );

@@ -396,6 +396,9 @@ class Piece {
     movePieceRight() {
         this.leftX += 1;
     }
+    movePieceDown() {
+        this.upperY += 1;
+    }
     renderPiece(ctx) {
         for (let i = this.upperY; i < this.upperY + this.height; i += 1) {
             if (i < 0) {

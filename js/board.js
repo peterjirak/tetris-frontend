@@ -53,6 +53,7 @@ class Board {
                  }
             }
             activePiece.movePieceLeft();
+            return true;
         }
     }
 
@@ -80,6 +81,35 @@ class Board {
                  }
             }
             activePiece.movePieceRight();
+            return true;
+        }
+    }
+
+    moveActivePieceDown() {
+        if (!this.activePiece || !this.boardGrid) {
+            return false;
+        } else {
+            const boardGrid = this.boardGrid;
+            const activePiece = this.activePiece;
+            const lowerY = activePiece.getLowerY();
+            if (lowerY >= ROWS - 1) {
+                return false;
+            }
+            const pieceGrid = activePiece.pieceGrid;
+            const leftX = activePiece.getLeftX();
+            const rightX = activePiece.getRightX();
+            const height = activePiece.height;
+            for (let j = leftX; j <= rightX; j += 1) {
+                const boardCode = boardGrid[lowerY + 1][j];
+                if (TETROMINOS[boardCode] !== NONE) {
+                    const pieceCode = pieceGrid[height - 1][j - leftX];
+                    if (TETROMINOS[pieceCode] !== NONE) {
+                        return false;
+                    }
+                }
+            }
+            activePiece.movePieceDown();
+            return true;
         }
     }
 
