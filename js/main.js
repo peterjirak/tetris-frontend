@@ -38,5 +38,24 @@ const renderPiece = () => {
             activePiece.renderPiece(ctx);
         }
     }
+}
 
+const setGameActive = () => {
+    if (!board) {
+        board = new Board(ctx);
+        board.renderBoard();
+    }
+    board.setGameActive();
+}
+
+const isGameActive = () => {
+    if (!board) {
+        return false;
+    } else {
+        return board.isGameActive();
+    }
+}
+
+const getBoard = () => {
+    return board;
 }
