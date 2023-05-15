@@ -139,7 +139,9 @@ class Board {
             for (let i = upperY; i <= lowerY; i += 1) {
                 for (let j = leftX; j <= rightX; j += 1) {
                     const pieceCode = pieceGrid[i - upperY][j - leftX];
-                    this.boardGrid[i][j] = pieceCode;
+                    if (TETROMINOS[pieceCode] !== NONE) {
+                        this.boardGrid[i][j] = pieceCode;
+                    }
                 }
             }
             console.table(this.boardGrid);
