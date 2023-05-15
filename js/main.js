@@ -15,7 +15,7 @@ ctx.canvas.height = ROWS * BLOCK_SIZE;
 
 const createNewAndRenderBoard = () => {
     board = new Board(ctx);
-    console.table(board.grid);
+    console.table(board.boardGrid);
     board.renderBoard();
 }
 

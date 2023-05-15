@@ -3,7 +3,7 @@ class Board {
         this.ctx = ctx;
         this.cols = ctx.canvas.width / BLOCK_SIZE;
         this.rows = ctx.canvas.height / BLOCK_SIZE;
-        this.grid = this.getEmptyBoard();
+        this.boardGrid = this.getEmptyBoard();
         this.gameActive = false;
         this.activePiece = null;
     }
@@ -19,8 +19,8 @@ class Board {
     }
 
     renderBoard() {
-        for (let i = 0; i < this.grid.length; i += 1) {
-            const row = this.grid[0];
+        for (let i = 0; i < this.boardGrid.length; i += 1) {
+            const row = this.boardGrid[0];
             for (let j = 0; j < row.length; j += 1) {
                 const contentCode = row[j];
                 if (TETROMINOS_VALUE_BY_NAME[NONE] === contentCode) {

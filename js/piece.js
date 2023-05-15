@@ -5,7 +5,7 @@
  * Tetromino Rotations
  * TETROMINO T:
  *     ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             1 1 1
  *             0 1 0
  *         WIDTH: 3
@@ -13,7 +13,7 @@
  * 
  * 
  *     ROTATION 1:
- *         GRID:
+ *         PIECE_GRID:
  *             0 1
  *             1 1
  *             0 1
@@ -21,14 +21,14 @@
  *         HEIGHT: 3
  * 
  *     ROTATION 2:
- *         GRID:
+ *         PIECE_GRID:
  *             0 1 0
  *             1 1 1
  *         WIDTH: 3
  *         HEIGHT: 2
  * 
  *     ROTATION 3:
- *         GRID:
+ *         PIECE_GRID:
  *             1 0
  *             1 1
  *             1 0
@@ -37,7 +37,7 @@
  * 
  * TETROMINO L:
  *     ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             2 0
  *             2 0
  *             2 2
@@ -45,14 +45,14 @@
  *         HEIGHT: 3
  * 
  *     ROTATION 1:
- *         GRID:
+ *         PIECE_GRID:
  *             2 2 2
  *             2 0 0
  *         WIDTH: 3
  *         HEIGHT: 2
  * 
  *    ROTATION 2:
- *         GRID:
+ *         PIECE_GRID:
  *             2 2
  *             0 2
  *             0 2
@@ -60,7 +60,7 @@
  *         HEIGHT: 3
  * 
  *    ROTATION 3:
- *         GRID:
+ *         PIECE_GRID:
  *             0 0 2
  *             2 2 2
  *         WIDTH: 3
@@ -68,7 +68,7 @@
  * 
  * TETROMINO SKEW:
  *    ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             0 3
  *             3 3
  *             3 0
@@ -76,7 +76,7 @@
  *         HEIGHT: 3
  *
  *    ROTATION 1:
- *         GRID:
+ *         PIECE_GRID:
  *             3 3 0
  *             0 3 3
  *         WIDTH: 3
@@ -84,7 +84,7 @@
  * 
  * TETROMINO SQUARE:
  *    ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             4 4
  *             4 4
  *         WIDTH: 2
@@ -92,13 +92,13 @@
  *
  * TETROMINO STRAIGHT:
  *    ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             5 5 5 5
  *         WIDTH: 4
  *         HEIGHT: 1
  * 
  *    ROTATION 1:
- *         GRID:
+ *         PIECE_GRID:
  *             5
  *             5
  *             5
@@ -108,7 +108,7 @@
  * 
  * TETROMINO MIRROR_L:
  *     ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             0 6
  *             0 6
  *             6 6
@@ -116,14 +116,14 @@
  *         HEIGHT: 3
  * 
  *     ROTATION 1:
- *         GRID:
+ *         PIECE_GRID:
  *             6 0 0
  *             6 6 6
  *         WIDTH: 3
  *         HEIGHT: 2
  * 
  *    ROTATION 2:
- *         GRID:
+ *         PIECE_GRID:
  *             6 6
  *             6 0
  *             6 0
@@ -131,7 +131,7 @@
  *         HEIGHT: 3
  * 
  *    ROTATION 3:
- *         GRID:
+ *         PIECE_GRID:
  *             6 6 6
  *             0 0 6
  *         WIDTH: 3
@@ -139,7 +139,7 @@
  * 
  * TETROMINO MIRROR_SKEW:
  *    ROTATION 0:
- *         GRID:
+ *         PIECE_GRID:
  *             7 0
  *             7 7
  *             0 7
@@ -147,7 +147,7 @@
  *         HEIGHT: 3
  *
  *    ROTATION 1:
- *         GRID:
+ *         PIECE_GRID:
  *             0 7 7
  *             7 7 0
  *             
@@ -160,14 +160,14 @@ class Piece {
         [T]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 1, 1, 1 ],
                           [ 0, 1, 0 ] ],
                     width: 3,
                     height: 2
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 0, 1 ],
                           [ 1, 1 ],
                           [ 0, 1 ] ],
@@ -175,14 +175,14 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 0, 1, 0 ],
                           [ 1, 1, 1 ] ],
                     width: 3,
                     height: 2
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 1, 0 ],
                           [ 1, 1 ],
                           [ 1, 0 ] ],
@@ -194,7 +194,7 @@ class Piece {
         [L]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 2, 0 ],
                           [ 2, 0 ],
                           [ 2, 2 ] ],
@@ -202,14 +202,14 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 2, 2, 2 ],
                           [ 2, 0, 0 ] ],
                     width: 3,
                     height: 2
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 2, 2 ],
                           [ 0, 2 ],
                           [ 0, 2 ] ],
@@ -217,7 +217,7 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 0, 0, 2 ],
                           [ 2, 2, 2 ] ],
                     width: 3,
@@ -228,7 +228,7 @@ class Piece {
         [SKEW]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 0, 3 ],
                           [ 3, 3 ],
                           [ 3, 0 ] ],
@@ -236,7 +236,7 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 3, 3, 0 ],
                           [ 0, 3, 3 ] ],
                     width: 3,
@@ -247,7 +247,7 @@ class Piece {
         [SQUARE]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 4, 4 ],
                           [ 4, 4 ] ],
                     width: 2,
@@ -258,7 +258,7 @@ class Piece {
         [STRAIGHT]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 5 ],
                           [ 5 ],
                           [ 5 ],
@@ -267,7 +267,7 @@ class Piece {
                     height: 4
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 5, 5, 5, 5] ],
                     width: 4,
                     height: 1
@@ -277,7 +277,7 @@ class Piece {
         [MIRROR_L]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 0, 6 ],
                           [ 0, 6 ],
                           [ 6, 6 ] ],
@@ -285,14 +285,14 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 6, 0, 0 ],
                           [ 6, 6, 6 ] ],
                     width: 3,
                     height: 2
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 6, 6 ],
                           [ 6, 0 ],
                           [ 6, 0 ] ],
@@ -300,7 +300,7 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 6, 6, 6 ],
                           [ 0, 0, 6 ] ],
                     width: 3,
@@ -311,7 +311,7 @@ class Piece {
         [MIRROR_SKEW]: {
             rotations: [
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 7, 0 ],
                           [ 7, 7 ],
                           [ 0, 7 ] ],
@@ -319,7 +319,7 @@ class Piece {
                     height: 3
                 },
                 {
-                    grid:
+                    pieceGrid:
                         [ [ 0, 7, 7 ],
                           [ 7, 7, 0 ] ],
                     width: 3,
@@ -345,12 +345,12 @@ class Piece {
         this.tetrominoType = tetrominoType;
         const rotation = !args || args.rotation === null || args.rotation === undefined ? Piece._chooseRandomRotationIndex(tetrominoType) : args.rotation;
         this.rotation = rotation;
-        const grid = Piece.tetrominos[tetrominoType].rotations[rotation].grid;
+        const pieceGrid = Piece.tetrominos[tetrominoType].rotations[rotation].pieceGrid;
         const width = Piece.tetrominos[tetrominoType].rotations[rotation].width;
         const height = Piece.tetrominos[tetrominoType].rotations[rotation].height;
         const leftX = !args || args.leftX === null || args.leftX === undefined ? Math.floor(Math.random() * ((COLS - 1 - width + 1 - 0) +1) + 0) : args.leftX;
         const upperY = !args || args.upperY === null || args.upperY === undefined ? 0 - height + 1 : args.upperY;
-        this.grid = grid;
+        this.pieceGrid = pieceGrid;
         this.width = width;
         this.height = height;
         this.leftX = leftX;
@@ -364,14 +364,14 @@ class Piece {
         const currentUpperY = this.upperY;
         const currentLowerY = currentUpperY + currentHeight;
         const newRotation = currentRotation >= -1 + Piece.tetrominos[tetrominoType].rotations.length ? 0 : currentRotation + 1;
-        const newGrid = Piece.tetrominos[tetrominoType].rotations[newRotation].grid;
+        const newGrid = Piece.tetrominos[tetrominoType].rotations[newRotation].pieceGrid;
         const newWidth = Piece.tetrominos[tetrominoType].rotations[newRotation].width;
         const newHeight = Piece.tetrominos[tetrominoType].rotations[newRotation].height;
         const newUpperY = currentLowerY - newHeight;
         const newRightX = currentLeftX + newWidth >  COLS - 1 ? COLS - 1 - newWidth : currentLeftX + newWidth;
         const newLeftX = newRightX - newWidth;
         this.rotation = newRotation;
-        this.grid = newGrid;
+        this.pieceGrid = newGrid;
         this.width = newWidth;
         this.height = newHeight;
         this.upperY = newUpperY;
@@ -384,10 +384,10 @@ class Piece {
                 continue;
             }
             for (let j = this.leftX; j < this.leftX + this.width; j += 1) {
-                const grid = this.grid;
+                const pieceGrid = this.pieceGrid;
                 const rowIndex = i - this.upperY;
                 const columnIndex = j - this.leftX;
-                const contentCode = grid[rowIndex][columnIndex];
+                const contentCode = pieceGrid[rowIndex][columnIndex];
                 const cellType = TETROMINOS[contentCode];
                 renderSquare(ctx, cellType, i, j);
             }
