@@ -169,7 +169,7 @@ class Piece {
                 {
                     grid:
                         [ [ 0, 1 ],
-                          [ 1, 1 ]
+                          [ 1, 1 ],
                           [ 0, 1 ] ],
                     width: 2,
                     height: 3
@@ -184,7 +184,7 @@ class Piece {
                 {
                     grid:
                         [ [ 1, 0 ],
-                          [ 1, 1 ]
+                          [ 1, 1 ],
                           [ 1, 0 ] ],
                     width: 2,
                     height: 3
@@ -343,16 +343,18 @@ class Piece {
     constructor(args) {
         const tetrominoType = !args || !args.tetrominoType ? Piece._chooseRandomTetromino() : args.tetrominoType;
         this.tetrominoType = tetrominoType;
-        const rotation = !args || !args.rotation ? Piece._chooseRandomRotationIndex(tetrominoType) : args.rotation;
+        const rotation = !args || args.rotation === null || args.rotation === undefined ? Piece._chooseRandomRotationIndex(tetrominoType) : args.rotation;
         this.rotation = rotation;
         const grid = Piece.tetrominos[tetrominoType].rotations[rotation].grid;
         const width = Piece.tetrominos[tetrominoType].rotations[rotation].width;
         const height = Piece.tetrominos[tetrominoType].rotations[rotation].height;
+        const leftX = !args || args.leftX === null || args.leftX === undefined ? Math.floor(Math.random() * ((COLS - 1 - width + 1 - 0) +1) + 0) : args.leftX;
+        const upperY = !args || args.upperY === null || args.upperY === undefined ? 0 - height + 1 : args.upperY;
         this.grid = grid;
         this.width = width;
         this.height = height;
-        this.leftX = Math.floor(Math.random() * ((COLS - 1 - width + 1 - 0) +1) + 0);
-        this.upperY = 0 - height + 1; 
+        this.leftX = leftX;
+        this.upperY = upperY;
     }
     renderPiece(ctx) {
         const tetrominoType = this.tetrominoType;
@@ -361,7 +363,10 @@ class Piece {
                 continue;
             }
             for (let j = this.leftX; j < this.leftX + this.width; j += 1) {
-                const contentCode = this.grid[i - this.upperY][j - this.leftX];
+                const grid = this.grid;
+                const rowIndex = i - this.upperY;
+                const columnIndex = j - this.leftX;
+                const contentCode = grid[rowIndex][columnIndex];
                 const cellType = TETROMINOS[contentCode];
                 renderSquare(ctx, cellType, i, j);
             }
