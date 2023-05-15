@@ -363,7 +363,7 @@ class Piece {
             for (let j = this.leftX; j < this.leftX + this.width; j += 1) {
                 const contentCode = this.grid[i - this.upperY][j - this.leftX];
                 const cellType = TETROMINOS[contentCode];
-                renderSquare(ctx, tetrominoType, i, j);
+                renderSquare(ctx, cellType, i, j);
             }
         }
     }
