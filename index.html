@@ -8,7 +8,9 @@ rel="stylesheet"
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 
-<body onload="createNewAndRenderBoard()">
+<!-- <body onload="createNewAndRenderBoard(); placePiece(); renderPiece();"> -->
+
+<body onload="createNewAndRenderBoard(); registerReleaseUpArrowKey();">
 
   <div class="grid">
     <canvas id="board" class="game-board"></canvas>
@@ -20,12 +22,14 @@ rel="stylesheet"
         <p>Level: <span id="level">0</span></p>
         <canvas id="next" class="next"></canvas>
       </div>
-      <button onclick="createNewAndRenderBoard()" class="play-button">Play</button>
+      <button onclick="createNewAndRenderBoard(); placePiece(); renderPiece(); setGameActive();" class="play-button">Play</button>
     </div>
   </div>
   <script type="text/javascript" src="./js/constants.js"></script>
+  <script type="text/javascript" src="./js/renderUtilities.js"></script>
   <script type="text/javascript" src="./js/board.js"></script>
   <script type="text/javascript" src="./js/piece.js"></script>
   <script type="text/javascript" src="./js/main.js"></script>
+  <script type="text/javascript" src="./js/eventListeners.js"></script>
 </body>
 </html>
