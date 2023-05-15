@@ -30,11 +30,12 @@ const placePiece = () => {
 const renderPiece = () => {
     if (board) {
         if (!board.activePiece) {
-            const ctx = board.ctx;
-            const activePiece = board.activePiece;
-            if (activePiece) {
-                activePiece.renderPiece(ctx);
-            }
+            board.addActivePiece();
+        }
+        const ctx = board.ctx;
+        const activePiece = board.activePiece;
+        if (activePiece) {
+            activePiece.renderPiece(ctx);
         }
     }
 
