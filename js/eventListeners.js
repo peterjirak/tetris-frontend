@@ -52,6 +52,16 @@ const registerReleaseUpArrowKey = () => {
                             if (activePiece) {
                                 board.moveActivePieceDown();
                                 board.renderBoard();
+                                // Moving an active piece down may cause
+                                // collision with the board. When collision
+                                // occurs, the active piece is added to the
+                                // board and a new active piece is created and
+                                // added to the board.
+                                //
+                                // So when rendering after executing the
+                                // moveActivePieceDown, the activePiece must be
+                                // retrieved from the board before it is used for
+                                // rendering:
                                 activePiece = board.activePiece;
                                 if (activePiece) {
                                     const ctx = board.ctx;
