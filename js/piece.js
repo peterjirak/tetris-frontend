@@ -410,7 +410,9 @@ class Piece {
                 const columnIndex = j - this.leftX;
                 const contentCode = pieceGrid[rowIndex][columnIndex];
                 const cellType = TETROMINOS[contentCode];
-                renderSquare(ctx, cellType, i, j);
+                if (cellType !== NONE) {
+                    renderSquare(ctx, cellType, i, j);
+                }
             }
         }
     }
