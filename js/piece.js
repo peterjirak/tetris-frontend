@@ -356,6 +356,18 @@ class Piece {
         this.leftX = leftX;
         this.upperY = upperY;
     }
+    getLeftX() {
+        return this.leftX;
+    }
+    getUpperY() {
+        return this.upperY;
+    }
+    getRightX() {
+        return this.leftX + this.width - 1;
+    }
+    getLowerY() {
+        return this.upperY + this.height - 1;
+    }
     rotatePieceClockwise() {
         const tetrominoType = this.tetrominoType;
         const currentRotation = this.rotation;
@@ -377,6 +389,12 @@ class Piece {
         this.upperY = newUpperY;
         this.leftX = newLeftX;
         return;
+    }
+    movePieceLeft() {
+        this.leftX -= 1;
+    }
+    movePieceRight() {
+        this.leftX += 1;
     }
     renderPiece(ctx) {
         for (let i = this.upperY; i < this.upperY + this.height; i += 1) {

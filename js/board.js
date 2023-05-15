@@ -30,6 +30,59 @@ class Board {
         }
     }
 
+    moveActivePieceLeft() {
+        if (!this.activePiece || !this.boardGrid) {
+            return false;
+        } else {
+            const boardGrid = this.boardGrid;
+            const activePiece = this.activePiece;
+            const leftX = activePiece.getLeftX();
+            if (leftX <= 0) {
+                return false;
+            }
+            const pieceGrid = activePiece.pieceGrid;
+            const upperY = activePiece.getUpperY();
+            const lowerY = activePiece.getLowerY();
+            for (let i = upperY; i <= lowerY; i += 1) {
+                 const boardCode = boardGrid[i][leftX - 1];
+                 if (TETROMINOS[boardCode] !== NONE) {
+                    const pieceCode = pieceGrid[i - upperY][0];
+                    if (TETROMINOS[pieceCode] !== NONE) {
+                        return false;
+                    }
+                 }
+            }
+            activePiece.movePieceLeft();
+        }
+    }
+
+    moveActivePieceRight() {
+        if (!this.activePiece || !this.boardGrid) {
+            return false;
+        } else {
+            const boardGrid = this.boardGrid;
+            const activePiece = this.activePiece;
+            const rightX = activePiece.getRightX();
+            if (rightX >= COLS - 1) {
+                return false;
+            }
+            const pieceGrid = activePiece.pieceGrid;
+            const upperY = activePiece.getUpperY();
+            const lowerY = activePiece.getLowerY();
+            const width = activePiece.width;
+            for (let i = upperY; i <= lowerY; i += 1) {
+                 const boardCode = boardGrid[i][rightX + 1];
+                 if (TETROMINOS[boardCode] !== NONE) {
+                    const pieceCode = pieceGrid[i - upperY][width - 1];
+                    if (TETROMINOS[pieceCode] !== NONE) {
+                        return false;
+                    }
+                 }
+            }
+            activePiece.movePieceRight();
+        }
+    }
+
     getEmptyBoard() {
         return Array.from(
             {length: ROWS}, () => Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE])
