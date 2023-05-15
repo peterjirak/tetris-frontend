@@ -99,5 +99,7 @@ const palette = {
     [IMPERIAL_RED]: '#F33F45',
     [ENGINEERING_ORANGE]: '#C00C12',
     [ICE_BLUE]: '#8DF7F7',
-    [ROBIN_EGG_BLUE]: '#16DFDF'
+    [ROBIN_EGG_BLUE]: '#16DFDF',
+    [JORDY_BLUE]: '#9DBCFB',
+    [AZURE]: '#5083E2'
 };
