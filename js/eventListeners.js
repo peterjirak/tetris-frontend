@@ -48,12 +48,15 @@ const registerReleaseUpArrowKey = () => {
                     if (isGameActive()) {
                         const board = getBoard();
                         if (board) {
-                            const activePiece = board.activePiece;
+                            let activePiece = board.activePiece;
                             if (activePiece) {
                                 board.moveActivePieceDown();
                                 board.renderBoard();
-                                const ctx = board.ctx;
-                                activePiece.renderPiece(ctx);
+                                activePiece = board.activePiece;
+                                if (activePiece) {
+                                    const ctx = board.ctx;
+                                    activePiece.renderPiece(ctx);
+                                }
                             }
                         }
                     }
