@@ -12,8 +12,8 @@ class Board {
         if (this.activePiece) {
             return false;
         } else{
-            this.activePiece = new Piece( { tetrominoType: L, rotation: 0, leftX: 5, upperY: 5 } );
-//            this.activePiece = new Piece();
+//            this.activePiece = new Piece( { tetrominoType: L, rotation: 0, leftX: 5, upperY: 5 } );
+            this.activePiece = new Piece();
             return true;
         }
     }
