@@ -90,7 +90,7 @@ class Board {
         }
     }
 
-    moveActivePieceDown() {
+    doesMovePieceDownResultInCollision() {
         if (!this.activePiece || !this.boardGrid) {
             return false;
         } else {
@@ -142,7 +142,17 @@ class Board {
                     }
                 }
             }
-            if (!collided) {
+            return collided;
+        }
+    }
+
+    moveActivePieceDown() {
+        if (!this.activePiece || !this.boardGrid) {
+            return false;
+        } else {
+        const collided = this.doesMovePieceDownResultInCollision();
+        if (!collided) {
+                const activePiece = this.activePiece;
                 activePiece.movePieceDown();
             } else {
                 this.handleCollision();
