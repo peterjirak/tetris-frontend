@@ -68,3 +68,7 @@ const clearLineCount = () => {
 const addToLineCount = (addValue) => {
     lines += addValue;
 }
+
+const getLineCount = () => {
+    return lines;
+}

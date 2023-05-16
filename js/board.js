@@ -215,6 +215,11 @@ class Board {
             this.boardGrid.unshift(newRow);
         }
         addToLineCount(completedRows.length);
+        const linesSpan = document.getElementById('lines');
+        if (linesSpan) {
+            const lineCount = getLineCount();
+            linesSpan.innerText = `${lineCount}`;
+        }
     }
 
     getEmptyBoard() {
