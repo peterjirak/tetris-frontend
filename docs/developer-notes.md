@@ -22,4 +22,5 @@
  * [Geeks for Geeks: Creating a Zero-Filled Array in JavaScript](https://www.geeksforgeeks.org/creating-a-zero-filled-array-in-javascript/)
  * [Geejs for Geeks: How to print debug messages in the Google Chrome JavaScript Console?](https://www.geeksforgeeks.org/how-to-print-debug-messages-in-the-google-chrome-javascript-console/)
  * [Play Tetris | Free Online Game](https://tetris.com/play-tetris)
+ * [iTecNote: Javascript – Prevent space button from triggering any other button click in jQuery](https://itecnote.com/tecnote/javascript-prevent-space-button-from-triggering-any-other-button-click-in-jquery/)
  * Local occurence of tetris-frontend project: `file:///Users/peterjirak/Desktop/PeterEldritch/PeterEldritch/Projects/Tetris/Source-Code/tetris-frontend/index.html`
