@@ -104,16 +104,41 @@ class Board {
             if (!collided) {
                 const pieceGrid = activePiece.pieceGrid;
                 const leftX = activePiece.getLeftX();
+                const upperY = activePiece.getUpperY();
                 const rightX = activePiece.getRightX();
+                const lowerY = activePiece.getLowerY();
+//                const width  = activePiece.width;
                 const height = activePiece.height;
-                for (let j = leftX; j <= rightX; j += 1) {
-                    const boardCode = boardGrid[lowerY + 1][j];
-                    if (TETROMINOS[boardCode] !== NONE) {
-                        const pieceCode = pieceGrid[height - 1][j - leftX];
-                        if (TETROMINOS[pieceCode] !== NONE) {
+                for (let i = upperY; i <= lowerY; i+= 1) {
+                    for (let j = leftX; j <= rightX; j += 1) {
+                        const pieceRowIndex = i - upperY;
+                        const pieceColumnIndex = j - leftX;
+                        const pieceCode = pieceGrid[pieceRowIndex][pieceColumnIndex];
+                        if (TETROMINOS[pieceCode] === NONE) {
+                            // The current piece square is empty so it cannot collide with the board:
+                            continue;
+                        } else if (pieceRowIndex < height - 1) {
+                            // The current piece square is not in the bottom row of the piece,
+                            // Check to see if the piece has a non-empty square beneath this square.
+                            // If it does, we don't need to check to see if this piece collides with the board.
+                            // We will check to see if the square below this square collides with the board.
+                            const pieceBelowCode = pieceGrid[pieceRowIndex + 1][pieceColumnIndex];
+                            if (TETROMINOS[pieceBelowCode] !== NONE) {
+                                continue;
+                            }
+                        }
+                        const boardRowIndex = i + 1
+                        if (boardRowIndex < 0) {
+                            continue;
+                        }
+                        const boardCode = boardGrid[boardRowIndex][j];
+                        if (TETROMINOS[boardCode] !== NONE) {
                             collided = true;
                             break;
                         }
+                    }
+                    if (collided) {
+                        break;
                     }
                 }
             }
