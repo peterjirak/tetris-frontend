@@ -18,7 +18,7 @@
  * [Google Search: javascript addeventlistener](https://www.google.com/search?q=javascript+addeventlistener&sxsrf=APwXEdebKTD8KXHgj-tb1rdEulv9zJaqlw%3A1684129871774&source=hp&ei=T8hhZM7HLMTC9APdhKm4Aw&iflsig=AOEireoAAAAAZGHWX3iQl4dfPGAaE7y3IZ-6RYV9OQEQ&oq=JavaScript+register+event&gs_lcp=Cgdnd3Mtd2l6EAMYAzIFCAAQgAQyBQgAEIAEMgUIABCABDIICAAQFhAeEAoyBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgYIABAWEB46BwgjEIoFECc6BAgjECc6BwgAEIoFEEM6CggAEIoFELEDEEM6CAgAEIAEELEDOggIABCKBRCRAjoKCAAQgAQQFBCHAlAAWIFLYKqpAmgAcAB4AIABjQGIAYUMkgEEMjMuMpgBAKABAQ&sclient=gws-wiz)
     * [W3 Schools: HTML DOM Document addEventListener()](https://www.w3schools.com/jsref/met_document_addeventlistener.asp)
  * [MSN: References > Web APIs > Element > keyup](https://developer.mozilla.org/en-US/docs/Web/API/Element/keyup_event)
- * [Toptal: Utilities > Leycodes](https://www.toptal.com/developers/keycode)
+ * [Toptal: Utilities > Keycodes](https://www.toptal.com/developers/keycode)
  * [Geeks for Geeks: Creating a Zero-Filled Array in JavaScript](https://www.geeksforgeeks.org/creating-a-zero-filled-array-in-javascript/)
  * [Geejs for Geeks: How to print debug messages in the Google Chrome JavaScript Console?](https://www.geeksforgeeks.org/how-to-print-debug-messages-in-the-google-chrome-javascript-console/)
  * [Play Tetris | Free Online Game](https://tetris.com/play-tetris)
