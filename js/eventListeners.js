@@ -79,7 +79,9 @@ const registerReleaseUpArrowKey = () => {
                             }
                         }
                     }
-                }  else if (event.key === ' ') {
+                }  else if (event.key === ' ') { // Space key
+                    event.stopPropagation();
+                    event.preventDefault();
                     if (isGameActive()) {
                         const board = getBoard();
                         if (board) {
