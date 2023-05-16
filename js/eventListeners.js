@@ -79,6 +79,31 @@ const registerReleaseUpArrowKey = () => {
                             }
                         }
                     }
+                }  else if (event.key === ' ') {
+                    if (isGameActive()) {
+                        const board = getBoard();
+                        if (board) {
+                            let activePiece = board.activePiece;
+                            if (activePiece) {
+                                board.moveActivePieceDownUntilCollisionOccurs();
+                                board.renderBoard();
+                                activePiece = board.activePiece;
+                                if (activePiece) {
+                                    const ctx = board.ctx;
+                                    activePiece.renderPiece(ctx);
+                                }
+                            }
+                            if (board.hasCompletedRows()) {
+                                board.handleCompletedRows();
+                                board.renderBoard();
+                                activePiece = board.activePiece;
+                                if (activePiece) {
+                                    const ctx = board.ctx;
+                                    activePiece.renderPiece(ctx);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         );

@@ -150,13 +150,26 @@ class Board {
         if (!this.activePiece || !this.boardGrid) {
             return false;
         } else {
-        const collided = this.doesMovePieceDownResultInCollision();
-        if (!collided) {
+            const collided = this.doesMovePieceDownResultInCollision();
+            if (!collided) {
                 const activePiece = this.activePiece;
                 activePiece.movePieceDown();
             } else {
                 this.handleCollision();
             }
+            return true;
+        }
+    }
+
+    moveActivePieceDownUntilCollisionOccurs() {
+        if (!this.activePiece || !this.boardGrid) {
+            return false;
+        } else {
+            while (!this.doesMovePieceDownResultInCollision()) {
+                const activePiece = this.activePiece;
+                activePiece.movePieceDown();
+            }
+            this.handleCollision();
             return true;
         }
     }
