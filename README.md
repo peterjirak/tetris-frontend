@@ -7,7 +7,7 @@ Instead the [JavaScript tutorial: Build Tetris with modern JavaScript](https://w
 
 While that provides less instruction were one to need instruction, it definitely gives one the opportunity to demonstrate one's own abilities since it doesn't provide a finished solution, just enough to get started.
 
-I often accumulate many links to potential projects to work on. This one has een sitting waiting for me to attempt it for several years. I started this project on the evening of May 10th, 2023 and have been working on it intermittently since then. I have made substantial progress towards a completed solution.
+I often accumulate many links to potential projects to work on. This one has been sitting waiting for me to attempt it for several years. I started this project on the evening of May 10th, 2023 and have been working on it intermittently since then. I have made substantial progress towards a completed solution.
 
 The work presented is my own.
 
