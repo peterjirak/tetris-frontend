@@ -90,16 +90,17 @@ class Board {
         }
     }
 
-    moveActivePieceRight() {
+    doesMovePieceRightResultInCollision() {
         if (!this.activePiece || !this.boardGrid) {
-            return false;
+            return null;
         } else {
             const boardGrid = this.boardGrid;
             const activePiece = this.activePiece;
             const rightX = activePiece.getRightX();
             if (rightX >= COLS - 1) {
-                return false;
+                return true;
             }
+            const leftX = activePiece.getLeftX();
             const pieceGrid = activePiece.pieceGrid;
             const upperY = activePiece.getUpperY();
             const lowerY = activePiece.getLowerY();
@@ -108,14 +109,44 @@ class Board {
                 if (i < 0) {
                     continue;
                 }
-                const boardCode = boardGrid[i][rightX + 1];
-                if (TETROMINOS[boardCode] !== NONE) {
-                    const pieceCode = pieceGrid[i - upperY][width - 1];
-                    if (TETROMINOS[pieceCode] !== NONE) {
-                        return false;
+                for (let j = leftX; j <= rightX; j += 1) {
+                    const pieceRowIndex = i - upperY;
+                    const pieceColumnIndex = j - leftX;
+                    const pieceCode = pieceGrid[pieceRowIndex][pieceColumnIndex];
+                    if (TETROMINOS[pieceCode] === NONE) {
+                        // The current piece square is empty so it cannot collide with the board:
+                        continue;
+                    } else if (pieceColumnIndex < width - 1) {
+                        // The current square is not in the right edge of the piece.
+                        // Check to see if the piece has a non-empty square to the
+                        // right of this square. If it does, then we don't need to
+                        // check to see if this square would collide with the board.
+                        // We check when we check on of the squares to the right of
+                        // this square. So checking this square is unnecessary.
+                        const pieceToTheRightCode = pieceGrid[pieceRowIndex][pieceColumnIndex + 1];
+                        if (TETROMINOS[pieceToTheRightCode] !== NONE) {
+                            continue;
+                        }
+                    }
+                    const boardColumnIndex = j + 1;
+                    const boardCode = boardGrid[i][boardColumnIndex];
+                    if (TETROMINOS[boardCode] !== NONE) {
+                        return true;
                     }
                 }
             }
+            return false;
+        }
+    }
+
+    moveActivePieceRight() {
+        if (!this.activePiece || !this.boardGrid) {
+            return false;
+        } else {
+            if (this.doesMovePieceRightResultInCollision()) {
+                return false;
+            }
+            const activePiece = this.activePiece;
             activePiece.movePieceRight();
             return true;
         }
