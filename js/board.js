@@ -1,12 +1,14 @@
 'use strict';
 
 class Board {
-    constructor(ctx) {
+    constructor(args) {
+        const ctx = args.ctx;
+        const addToCompletedLineCount = args.addToCompletedLineCount;
         this.ctx = ctx;
         this.cols = ctx.canvas.width / BLOCK_SIZE;
         this.rows = ctx.canvas.height / BLOCK_SIZE;
+        this.addToCompletedLineCount = addToCompletedLineCount;
         this.boardGrid = this.getEmptyBoard();
-        this.gameActive = false;
         this.activePiece = null;
     }
 
@@ -14,7 +16,6 @@ class Board {
         if (this.activePiece) {
             return false;
         } else{
-//            this.activePiece = new Piece( { tetrominoType: L, rotation: 0, leftX: 5, upperY: 5 } );
             this.activePiece = new Piece();
             return true;
         }
@@ -171,7 +172,6 @@ class Board {
                 const upperY = activePiece.getUpperY();
                 const rightX = activePiece.getRightX();
                 const lowerY = activePiece.getLowerY();
-//                const width  = activePiece.width;
                 const height = activePiece.height;
                 for (let i = upperY; i <= lowerY; i+= 1) {
                     for (let j = leftX; j <= rightX; j += 1) {
@@ -225,7 +225,7 @@ class Board {
         }
     }
 
-    moveActivePieceDownUntilCollisionOccurs() {
+    dropActivePiece() {
         if (!this.activePiece || !this.boardGrid) {
             return false;
         } else {
@@ -326,25 +326,12 @@ class Board {
             const newRow = Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE]);
             this.boardGrid.unshift(newRow);
         }
-        addToLineCount(completedRows.length);
-        const linesSpan = document.getElementById('lines');
-        if (linesSpan) {
-            const lineCount = getLineCount();
-            linesSpan.innerText = `${lineCount}`;
-        }
+        this.addToCompletedLineCount(completedRows.length);
     }
 
     getEmptyBoard() {
         return Array.from(
             {length: ROWS}, () => Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE])
         );
-    }
-
-    setGameActive() {
-        this.gameActive = true;
-    }
-
-    isGameActive() {
-        return this.gameActive;
     }
 }

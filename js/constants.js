@@ -7,6 +7,11 @@ const BLOCK_SIZE = 30;
 const GRID_WIDTH = 1;
 const BORDER_WIDTH = 5;
 
+const GAME_NOT_STARTED = 'GAME_NOT_STARTED';
+const GAME_ACTIVE = 'GAME_ACTIVE';
+const GAME_PAUSED = 'GAME_PAUSED';
+const GAME_OVER   = 'GAME_OVER';
+
 const BORDER = 'BORDER';
 const FILL = 'FILL';
 
