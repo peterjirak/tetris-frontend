@@ -1,3 +1,4 @@
+'use strict';
 
 /*
  * See constants for the list of 6 tetrominos plus one for none

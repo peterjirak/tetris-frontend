@@ -1,3 +1,5 @@
+'use strict';
+
 const renderGridBorder = (ctx, rowIndex, columnIndex) => {
     const leftX = columnIndex * BLOCK_SIZE;
     const upperY = rowIndex * BLOCK_SIZE;
