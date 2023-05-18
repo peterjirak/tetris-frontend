@@ -16,6 +16,8 @@ const registerReleaseUpArrowKey = () => {
                 } else if (event.key === 'ArrowDown') {
                     getGame().moveActivePieceDown();
                 }  else if (event.key === ' ') { // Space key
+                    event.stopPropagation();
+                    event.preventDefault();
                     getGame().dropActivePiece();
                 }
             }
