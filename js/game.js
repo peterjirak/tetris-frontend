@@ -5,6 +5,8 @@ class Game {
         this.ctx = ctx;
         this.completedLinesCount = 0;
         this.gameStatus = GAME_NOT_STARTED;
+        this.intervalDelay = 2000;
+        this.intervalTimeId = null;
 
         const addToCompletedLineCount = (addValue) => {
             this.addToCompletedLineCount(addValue);
@@ -16,20 +18,20 @@ class Game {
 
     startGame() {
         if (this.gameStatus !== GAME_ACTIVE) {
+            this.resetGame();
             this.gameStatus = GAME_ACTIVE;
-
-            const addToCompletedLineCount = (addValue) => {
-                this.addToCompletedLineCount(addValue);
-            }
-    
-            this.board = new Board({ctx: ctx,
-                                    addToCompletedLineCount: addToCompletedLineCount});
             this.board.addActivePiece();
+            this.enablePeriodicMoveActivePieceDown();
         }
     }
 
     pauseGame() {
+        this.disablePeriodicMoveActivePieceDown();
         this.gameStatus = GAME_PAUSED;
+    }
+
+    isGameActive() {
+        return this.gameStatus === GAME_ACTIVE ? true : false;
     }
 
     renderGame() {
@@ -48,10 +50,32 @@ class Game {
         }
     }
 
+    displayGameOver() {
+        const gameStatusSpan = document.getElementById('game_status');
+        if (gameStatusSpan) {
+            gameStatusSpan.innerText = 'GAME OVER';
+        }
+    }
+
+    clearGameStatusDisplay() {
+        const gameStatusSpan = document.getElementById('game_status');
+        if (gameStatusSpan) {
+            gameStatusSpan.innerText = '';
+        }
+    }
+
     resetGame() {
+        this.disablePeriodicMoveActivePieceDown();
+        this.gameStatus = GAME_NOT_STARTED;
         this.completedLinesCount = 0;
-        this.gameStatus = GAME_NOT_YET_STARTED;
-        this.board = new Board();
+
+        const addToCompletedLineCount = (addValue) => {
+            this.addToCompletedLineCount(addValue);
+        }
+
+        const ctx = this.ctx;
+        this.board = new Board({ctx: ctx,
+                                addToCompletedLineCount: addToCompletedLineCount});
     }
 
     rotateActivePieceClockwise() {
@@ -80,24 +104,55 @@ class Game {
 
     moveActivePieceDown() {
         if (this.gameStatus === GAME_ACTIVE) {
+            this.disablePeriodicMoveActivePieceDown();
             this.board.moveActivePieceDown();
             this.renderGame();
             this.board.handleCompletedRows()
             this.renderGame();
+            if (this.board.isGameOver()) {
+                this.disablePeriodicMoveActivePieceDown();
+                this.gameStatus = GAME_OVER;
+                this.displayGameOver();
+            }
+            this.enablePeriodicMoveActivePieceDown();
         }
     }
 
     dropActivePiece() {
         if (this.gameStatus === GAME_ACTIVE) {
+            this.disablePeriodicMoveActivePieceDown();
             this.board. dropActivePiece();
             this.renderGame();
             this.board.handleCompletedRows()
             this.renderGame();
+            if (this.board.isGameOver()) {
+                this.gameStatus = GAME_OVER;
+                this.displayGameOver();
+            }
         }
+        this.enablePeriodicMoveActivePieceDown();
     }
 
     addToCompletedLineCount(addValue) {
         this.completedLinesCount += addValue;
         this.updateCompletedLineCountDisplay();
+    }
+
+    enablePeriodicMoveActivePieceDown() {
+        if (!this.intervalTimeId) {
+            this.intervalTimeId = window.setInterval(
+                () => {
+                    this.moveActivePieceDown();
+                },
+                this.intervalDelay
+            )
+        }
+    }
+
+    disablePeriodicMoveActivePieceDown() {
+        if (this.intervalTimeId) {
+            window.clearInterval(this.intervalTimeId);
+            this.intervalTimeId = null;
+        }
     }
 }
