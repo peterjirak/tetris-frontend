@@ -18,6 +18,10 @@ const renderGame = () => {
     game.renderGame();
 }
 
+const clearGameStatusDisplay = () => {
+    game.clearGameStatusDisplay();
+}
+
 const getGame = () => {
     return game;
 }

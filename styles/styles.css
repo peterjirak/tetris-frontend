@@ -16,6 +16,10 @@
 .game-board {
     border: solid 2px;
 }
+
+.game-status {
+    font-size: 22px;
+}
    
 .play-button {
     background-color: #4caf50;
