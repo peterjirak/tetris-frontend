@@ -249,6 +249,9 @@ class Board {
             const lowerY = activePiece.getLowerY();
             const rightX = activePiece.getRightX();
             for (let i = upperY; i <= lowerY; i += 1) {
+                if (i < 0) {
+                    continue;
+                }
                 for (let j = leftX; j <= rightX; j += 1) {
                     const pieceCode = pieceGrid[i - upperY][j - leftX];
                     if (TETROMINOS[pieceCode] !== NONE) {
@@ -333,5 +336,30 @@ class Board {
         return Array.from(
             {length: ROWS}, () => Array(COLS).fill(TETROMINOS_VALUE_BY_NAME[NONE])
         );
+    }
+
+    isGameOver() {
+        if (this.activePiece && this.boardGrid) {
+            const activePiece = this.activePiece;
+            const activePieceLowerY = activePiece.getLowerY();
+            if (activePieceLowerY === 0) {
+                const activePieceLeftX = activePiece.getLeftX();
+                const activePieceRightX = activePiece.getRightX();
+                const activePieceHeight = activePiece.height;
+                const pieceGrid = activePiece.pieceGrid;
+                const boardGrid = this.boardGrid;
+                for (let j = activePieceLeftX; j <= activePieceRightX; j += 1) {
+                    const boardCellCode = boardGrid[0][j];
+                    if (TETROMINOS[boardCellCode] !== NONE) { 
+                        const activePieceCellCode = pieceGrid[activePieceHeight - 1][j - activePieceLeftX];
+                        if (TETROMINOS[activePieceCellCode] !== NONE) {
+                            console.debug('GAME IS OVER!')
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
