@@ -24,7 +24,7 @@ rel="stylesheet"
         <p><span class="game-status" id="game_status"></span></p>
         <canvas id="next" class="next"></canvas>
       </div>
-      <button onclick="startGame(); renderGame(); clearGameStatusDisplay();" class="play-button">Play</button>
+      <button id="game_button" onclick="handleGameButtonPress();" class="play-button">Play</button>
     </div>
   </div>
   <script type="text/javascript" src="./js/constants.js"></script>

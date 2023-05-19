@@ -25,3 +25,7 @@ const clearGameStatusDisplay = () => {
 const getGame = () => {
     return game;
 }
+
+const handleGameButtonPress = () => {
+    game.handleGameButtonPress();
+}

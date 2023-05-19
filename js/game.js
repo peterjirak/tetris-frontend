@@ -30,8 +30,33 @@ class Game {
         this.gameStatus = GAME_PAUSED;
     }
 
+    resumeGame() {
+        if (this.gameStatus === GAME_PAUSED) {
+            this.board.addActivePiece();
+            this.enablePeriodicMoveActivePieceDown();
+            this.gameStatus = GAME_ACTIVE;
+            this.renderGame();
+
+        }
+    }
+
+    handleGameButtonPress() {
+        if (this.isGameActive()) {
+            this.pauseGame();
+        } else if (this.isGamePaused()) {
+            this.resumeGame();
+        } else {
+            this.startGame();
+        }
+        this.renderGame();
+    }
+
     isGameActive() {
         return this.gameStatus === GAME_ACTIVE ? true : false;
+    }
+
+    isGamePaused() {
+        return this.gameStatus === GAME_PAUSED ? true : false;
     }
 
     renderGame() {
@@ -41,6 +66,8 @@ class Game {
             activePiece.renderPiece(ctx);
         }
         this.updateCompletedLineCountDisplay();
+        this.updateGameButton();
+        this.updateGameStatusDisplay();
     }
 
     updateCompletedLineCountDisplay() {
@@ -57,10 +84,47 @@ class Game {
         }
     }
 
+    displayGamePaused() {
+        const gameStatusSpan = document.getElementById('game_status');
+        if (gameStatusSpan) {
+            gameStatusSpan.innerText = 'PAUSED';
+        }
+    }
+
     clearGameStatusDisplay() {
         const gameStatusSpan = document.getElementById('game_status');
         if (gameStatusSpan) {
             gameStatusSpan.innerText = '';
+        }
+    }
+
+    updateGameButton() {
+        const button = document.getElementById('game_button');
+        if (button) {
+            if (this.gameStatus === GAME_NOT_STARTED || this.gameStatus === GAME_OVER) {
+                if (button.innerText !== 'PLAY') {
+                    button.innerText = 'PLAY';
+                }
+            } else if (this.gameStatus === GAME_ACTIVE) {
+                if (button.innerText !== 'PAUSE') {
+                    button.innerText = 'PAUSE';
+                }
+            } else {
+                button.innerText = 'RESUME';
+                if (button.innerText !== 'RESUME') {
+                    button.innerText = 'RESUME';
+                }
+            }
+        }
+    }
+
+    updateGameStatusDisplay() {
+        if (this.board.isGameOver()) {
+            this.displayGameOver();
+        } else if (this.isGamePaused()) {
+            this.displayGamePaused()
+        } else {
+            this.clearGameStatusDisplay();
         }
     }
 

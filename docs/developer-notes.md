@@ -24,4 +24,5 @@
  * [Play Tetris | Free Online Game](https://tetris.com/play-tetris)
  * [iTecNote: Javascript – Prevent space button from triggering any other button click in jQuery](https://itecnote.com/tecnote/javascript-prevent-space-button-from-triggering-any-other-button-click-in-jquery/)
  * [StackOverflow: How to configure VS Code on MacOS for git.path?](https://stackoverflow.com/questions/51396897/how-to-configure-vs-code-on-macos-for-git-path)
+ * [MDN: JavaScript: setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
  * Local occurence of tetris-frontend project: `file:///Users/peterjirak/Desktop/PeterEldritch/PeterEldritch/Projects/Tetris/Source-Code/tetris-frontend/index.html`
