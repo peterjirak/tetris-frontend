@@ -52,11 +52,19 @@ class Game {
     }
 
     isGameActive() {
-        return this.gameStatus === GAME_ACTIVE ? true : false;
+        return this.isGameOver() ? false : this.gameStatus === GAME_ACTIVE ? true : false;
     }
 
     isGamePaused() {
-        return this.gameStatus === GAME_PAUSED ? true : false;
+        return this.isGameOver() ? false : this.gameStatus === GAME_PAUSED ? true : false;
+    }
+
+    isGameOver() {
+        return this.board.isGameOver();
+    }
+
+    isGameNotStarted() {
+        return this.isGameOver() ? false : this.gameStatus === GAME_NOT_STARTED ? true : false;
     }
 
     renderGame() {
@@ -101,14 +109,14 @@ class Game {
     updateGameButton() {
         const button = document.getElementById('game_button');
         if (button) {
-            if (this.gameStatus === GAME_NOT_STARTED || this.gameStatus === GAME_OVER) {
+            if (this.isGameNotStarted() || this.isGameOver()) {
                 if (button.innerText !== 'PLAY') {
                     button.innerText = 'PLAY';
                     button.classList.remove('pause-button');
                     button.classList.remove('resume-button');
                     button.classList.add('play-button');
                 }
-            } else if (this.gameStatus === GAME_ACTIVE) {
+            } else if (this.isGameActive()) {
                 if (button.innerText !== 'PAUSE') {
                     button.innerText = 'PAUSE';
                     button.classList.remove('play-button');
