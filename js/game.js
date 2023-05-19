@@ -104,15 +104,23 @@ class Game {
             if (this.gameStatus === GAME_NOT_STARTED || this.gameStatus === GAME_OVER) {
                 if (button.innerText !== 'PLAY') {
                     button.innerText = 'PLAY';
+                    button.classList.remove('pause-button');
+                    button.classList.remove('resume-button');
+                    button.classList.add('play-button');
                 }
             } else if (this.gameStatus === GAME_ACTIVE) {
                 if (button.innerText !== 'PAUSE') {
                     button.innerText = 'PAUSE';
+                    button.classList.remove('play-button');
+                    button.classList.remove('resume-button');
+                    button.classList.add('pause-button');
                 }
             } else {
-                button.innerText = 'RESUME';
                 if (button.innerText !== 'RESUME') {
                     button.innerText = 'RESUME';
+                    button.classList.remove('play-button');
+                    button.classList.remove('pause-button');
+                    button.classList.add('resume-button');
                 }
             }
         }
