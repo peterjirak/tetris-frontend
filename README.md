@@ -23,7 +23,7 @@ Note that it is fully working but not fully finished. Also it works in a compute
 My URL for the deployment of my most recent revisions of my Tetris imnplementation is: [https://www.brilliant.cafe/games/tetris/index.html](https://www.brilliant.cafe/games/tetris/index.html)
 
 ## Description
-Periodically I engage in projects to practice my skills, build my skills, so what I know, and create small project demos for potential employers and clients. I was interested in a JavaScript project, so I Googled for a project to create Tetris. I found a "tutorial" from [Educative](https://www.educative.io/) for [building Tetris with modern JavaScript](https://www.educative.io/blog/javascript-tutorial-build-tetris).
+Periodically I engage in projects to practice my skills, build my skills, show what I know, and create small project demos for potential employers and clients. I was interested in a JavaScript project, so I Googled for a project to create Tetris. I found a "tutorial" from [Educative](https://www.educative.io/) for [building Tetris with modern JavaScript](https://www.educative.io/blog/javascript-tutorial-build-tetris).
 
 I initially anticipated that in this tutorial they solve the problem step by step and allow one to type along if one wished, the equivalent of those computer programming magazines from the 1980s which had programs one could type into one's computer, analogous to old paint-by-number paint kits where one created a painting by painting in the numbered shapes inside an outlined picture. Those kinds of tutorials can be instructive but they don't allow one to demonstrate one's own abilities since from start to finish the problem is solved for you.
 
