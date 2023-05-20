@@ -2,7 +2,7 @@
 
 const registeredEvents = {};
 
-const registerReleaseUpArrowKey = () => {
+const registerReleaseKeyboardKey = () => {
     if (!registeredEvents.releaseKeyboardKey) {
         window.addEventListener(
             'keyup',
