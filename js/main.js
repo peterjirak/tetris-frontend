@@ -1,31 +1,43 @@
 'use strict';
 
 //main.js
-const canvas = document.getElementById('board');
-const ctx = canvas.getContext('2d');
-
-// Calculate size of canvas from constants.
-ctx.canvas.width = COLS * BLOCK_SIZE;
-ctx.canvas.height = ROWS * BLOCK_SIZE;
-
-const game = new Game(ctx);
+let canvas = null;
+let ctx = null;
+let game = null;
 
 const startGame = () => {
-    game.startGame();
+    const g = getGame();
+    g.startGame();
 }
 
 const renderGame = () => {
-    game.renderGame();
+    const g = getGame();
+    g.renderGame();
 }
 
 const clearGameStatusDisplay = () => {
-    game.clearGameStatusDisplay();
+    const g = getGame();
+    g.clearGameStatusDisplay();
 }
 
 const getGame = () => {
+    if (game) {
+        return game;
+    }
+
+    canvas = document.getElementById('board');
+    ctx = canvas.getContext('2d');
+
+    // Calculate size of canvas from constants.
+    ctx.canvas.width = COLS * BLOCK_SIZE;
+    ctx.canvas.height = ROWS * BLOCK_SIZE;
+    
+    game = new Game(ctx);
+
     return game;
 }
 
 const handleGameButtonPress = () => {
-    game.handleGameButtonPress();
+    const g = getGame();
+    g.handleGameButtonPress();
 }
